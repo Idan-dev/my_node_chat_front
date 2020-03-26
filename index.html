@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test de chat node.js</title>
+		<meta charset='utf-8' />
+		<link rel='stylesheet' href="css/style.css"/>
+		<script src='/socket.io/socket.io.js' defer></script>
+		<script defer>
+			const io = require('/socket.io');
+			const socket = io.connect('http://localhost:3000/');
+		</script>
+	</head>
+	<body>
+		<form action="">
+			<input id="m" autocomplete="off"/>
+			<button>Send</button>
+		</form>
+	</body>
+</html>
