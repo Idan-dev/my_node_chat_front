@@ -16,3 +16,12 @@ button {
 	background: lightblue;
 	border-radius: 4px;
 }
+
+#messages {
+	list-style-type: none;
+	li{
+		&:nth-child(odd) {
+			background: grey;
+		}
+	}
+}

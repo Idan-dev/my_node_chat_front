@@ -17,4 +17,11 @@ button {
   border-radius: 4px;
 }
 
+#messages {
+  list-style-type: none;
+}
+#messages li:nth-child(odd) {
+  background: grey;
+}
+
 /*# sourceMappingURL=style.css.map */
