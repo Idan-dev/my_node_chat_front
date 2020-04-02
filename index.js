@@ -2,10 +2,15 @@ const socket = io();
 const input = document.getElementById('m');
 const form = document.querySelector('form');
 const messages = document.getElementById('messages');
-const userId = prompt("Quel est votre nom aujourd'hui?");
+let userId = prompt("Quel est votre nom aujourd'hui?");
 const writing = document.getElementById('change');
 
 socket.emit('new user', userId);
+
+socket.on('error id', () => {
+	userId = prompt("Pseudo déjà pris. Choisissez-en un autre!");
+	socket.emit('new user', userId);
+});
 
 socket.on('notification', (user) => {
 	const li = document.createElement('li');
@@ -23,6 +28,7 @@ socket.on('chat message', (message) => {
 	const li = document.createElement('li');
 	li.textContent = message;
 	messages.appendChild(li);
+	writing.textContent = '';
 });
 
 let timeOut;
