@@ -7,14 +7,33 @@ const writing = document.getElementById('change');
 
 socket.emit('new user', userId);
 
-socket.on('error id', () => {
-	userId = prompt("Pseudo déjà pris. Choisissez-en un autre!");
-	socket.emit('new user', userId);
+socket.on('error id', (caseNumber) => {
+	switch (caseNumber) {
+		case 1:
+		userId = prompt("Pseudo déjà pris. Choisissez-en un autre!");
+		socket.emit('new user', userId);
+		break;
+
+		case 2:
+		userId = prompt("Please, do not use special caracters (like >,./)");
+		socket.emit('new user', userId);
+		break;
+
+		default:
+		userId = prompt("Couldn't get you, please try again");
+		socket.emit('new user', userId);
+	}
 });
 
 socket.on('notification', (user) => {
 	const li = document.createElement('li');
 	li.textContent = user + ' is connected';
+	messages.appendChild(li);
+});
+
+socket.on('disconnection', (user) => {
+	const li = document.createElement('li');
+	li.textContent = user + ' disconnected';
 	messages.appendChild(li);
 });
 
