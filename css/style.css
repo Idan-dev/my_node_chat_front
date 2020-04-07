@@ -1,4 +1,43 @@
-form {
+@font-face {
+  font-family: "montserratlight";
+  src: url("fonts/montserrat-light-webfont.eot");
+  src: url("fonts/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/montserrat-light-webfont.woff2") format("woff2"), url("fonts/montserrat-light-webfont.woff") format("woff"), url("fonts/montserrat-light-webfont.ttf") format("truetype"), url("fonts/montserrat-light-webfont.svg#montserratlight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "montserratmedium";
+  src: url("fonts/montserrat-medium-webfont.eot");
+  src: url("fonts/montserrat-medium-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/montserrat-medium-webfont.woff2") format("woff2"), url("fonts/montserrat-medium-webfont.woff") format("woff"), url("fonts/montserrat-medium-webfont.ttf") format("truetype"), url("fonts/montserrat-medium-webfont.svg#montserratmedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "montserratregular";
+  src: url("fonts/montserrat-regular-webfont.eot");
+  src: url("fonts/montserrat-regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/montserrat-regular-webfont.woff2") format("woff2"), url("fonts/montserrat-regular-webfont.woff") format("woff"), url("fonts/montserrat-regular-webfont.ttf") format("truetype"), url("fonts/montserrat-regular-webfont.svg#montserratregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "montserratsemibold";
+  src: url("fonts/montserrat-semibold-webfont.eot");
+  src: url("fonts/montserrat-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/montserrat-semibold-webfont.woff2") format("woff2"), url("fonts/montserrat-semibold-webfont.woff") format("woff"), url("fonts/montserrat-semibold-webfont.ttf") format("truetype"), url("fonts/montserrat-semibold-webfont.svg#montserratsemibold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "montserratbold";
+  src: url("fonts/montserrat-bold-webfont.eot");
+  src: url("fonts/montserrat-bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/montserrat-bold-webfont.woff2") format("woff2"), url("fonts/montserrat-bold-webfont.woff") format("woff"), url("fonts/montserrat-bold-webfont.ttf") format("truetype"), url("fonts/montserrat-bold-webfont.svg#montserratbold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  background-color: #4580c4;
+}
+
+.form__chat {
   bottom: 0;
   position: absolute;
   border: 2px black solid;
@@ -7,14 +46,56 @@ form {
   padding: 1%;
 }
 
-input {
+.input__chat {
   width: 75%;
   border-radius: 4px;
 }
 
-button {
+.button__chat {
   background: lightblue;
   border-radius: 4px;
+}
+
+.form__authentification {
+  font-family: "montserratsemibold", no-serif;
+  color: white;
+  height: 30%;
+  width: 47%;
+  position: absolute;
+  top: 30%;
+  left: 25%;
+}
+.form__authentification__fieldset {
+  height: 100%;
+  border: 2px solid white;
+}
+.form__authentification__input--label {
+  position: absolute;
+  top: 25%;
+}
+.form__authentification__input--login {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  font-family: "montserratbold", sans-serif;
+  font-size: 1em;
+  color: #7a34eb;
+  border: none;
+  border-radius: 4px;
+  height: 8%;
+  padding: 1%;
+}
+.form__authentification__submit {
+  position: absolute;
+  top: 55%;
+  left: 30%;
+  padding: 1%;
+  text-transform: uppercase;
+  border: none;
+  font-family: "montserratbold", sans-serif;
+  border-radius: 4px;
+  background-color: white;
+  color: #4580c4;
 }
 
 #messages {
