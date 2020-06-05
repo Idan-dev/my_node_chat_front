@@ -50,6 +50,26 @@ socket.on('chat message', (message) => {
 	writing.textContent = '';
 });
 
+socket.on('chat retrival', (message) => {
+	console.log(message);
+	for (let i = 0; i < message.length; i++) {
+		let pseudo;
+
+		if (message[i].sender === undefined) {
+			pseudo = 'Anonymous';
+		} else {
+			pseudo = message[i].sender;
+		}
+
+		let oldMessages = message[i].message;
+
+		const li = document.createElement('li');
+		li.textContent = pseudo + ' : ' + oldMessages;
+		messages.appendChild(li);
+	}
+	console.log(message.length);
+});
+
 let timeOut;
 
 input.addEventListener('input', () => {
