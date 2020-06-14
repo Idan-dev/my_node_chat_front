@@ -1,4 +1,5 @@
-const pseudo = document.getElementById('pseudo');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
 const login = document.getElementById('form');
 let response;
 
@@ -14,10 +15,11 @@ sendRequest.onreadystatechange = function () {
 
 login.addEventListener('submit', (event) => {
 	event.preventDefault();
-	let userId = pseudo.value
+	let userEmail = email.value;
+	let userPassword = password.value;
 	sendRequest.open('POST', 'http://localhost:3000/chat/signup');
 	sendRequest.setRequestHeader('Content-type', 'application/json');
-	sendRequest.send(JSON.stringify({name: userId}));
+	sendRequest.send(JSON.stringify({email: userEmail, password: userPassword }));
 	console.log('Demande envoyée');
 });
 

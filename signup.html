@@ -9,12 +9,20 @@
 
 	<body>
 		<a href='./authentification.html'>Login</a>
-		<form class="form__authentification" action="" id='form'>
-			<fieldset class="form__authentification__fieldset">
-				<legend>Login choice</legend>
-				<label class="form__authentification__input, form__authentification__input--label" for="pseudo">Choose your chat name:</label>
-				<input class="form__authentification__input, form__authentification__input--login" type='text' id="pseudo"/>
-				<input id="choice" class="form__authentification__submit" type="submit" value="Sign Up"/>
+		<form class="authentification" action="" id='form'>
+			<fieldset class="authentification__fieldset">
+				<legend>Personal profile</legend>
+				<div class='authentification__fields'>
+					<div class='authentification__field'>
+				<label for='email'>Your email</label>
+				<input class="authentification__login" type='email' id='email'/>
+					</div>
+					<div class='authentification__field'>
+				<label for='password'>Your password</label>
+				<input class="authentification__login" type='password' id='password'/>
+					</div>
+				</div>
+				<input id="choice" class="authentification__submit" type="submit" value="Sign Up"/>
 			</fieldset>
 		</form>
 	</body>

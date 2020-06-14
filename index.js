@@ -50,7 +50,7 @@ socket.on('chat message', (message) => {
 	writing.textContent = '';
 });
 
-socket.on('chat retrival', (message) => {
+socket.on('chat retrieval', (message) => {
 	console.log(message);
 	for (let i = 0; i < message.length; i++) {
 		let pseudo;

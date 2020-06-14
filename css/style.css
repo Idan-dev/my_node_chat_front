@@ -56,38 +56,41 @@ body {
   border-radius: 4px;
 }
 
-.form__authentification {
+.authentification {
   font-family: "montserratsemibold", no-serif;
   color: white;
-  height: 30%;
+  height: 35%;
   width: 47%;
   position: absolute;
   top: 30%;
   left: 25%;
 }
-.form__authentification__fieldset {
+.authentification__fieldset {
   height: 100%;
   border: 2px solid white;
 }
-.form__authentification__input--label {
-  position: absolute;
-  top: 25%;
+.authentification__fields {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
-.form__authentification__input--login {
-  position: absolute;
-  top: 25%;
-  left: 50%;
+.authentification__field {
+  display: flex;
+  justify-content: space-between;
+}
+.authentification__login {
   font-family: "montserratbold", sans-serif;
   font-size: 1em;
   color: #7a34eb;
   border: none;
   border-radius: 4px;
-  height: 8%;
+  height: 18%;
   padding: 1%;
 }
-.form__authentification__submit {
+.authentification__submit {
   position: absolute;
-  top: 55%;
+  bottom: -12%;
   left: 30%;
   padding: 1%;
   text-transform: uppercase;
