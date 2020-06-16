@@ -10,7 +10,10 @@ sendRequest.onreadystatechange = function () {
 		response = JSON.parse(this.responseText);
 		console.log(response);
 		window.location.replace('./authentification.html');
-	} 
+	} else if (this.readyState === XMLHttpRequest.DONE && this.status === 400) {
+		response = JSON.parse(this.responseText);
+		console.log(response);
+	}
 };
 
 login.addEventListener('submit', (event) => {

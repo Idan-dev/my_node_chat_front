@@ -2,7 +2,10 @@ const socket = io();
 const input = document.getElementById('m');
 const form = document.querySelector('form');
 const messages = document.getElementById('messages');
-let userId = prompt("Quel est votre nom aujourd'hui?");
+console.log(document.cookie);
+let decodingCookie = document.cookie.split('=');
+let userId = decodingCookie[1];
+console.log(userId);
 const writing = document.getElementById('change');
 
 socket.emit('new user', userId);
@@ -10,7 +13,7 @@ socket.emit('new user', userId);
 socket.on('error id', (caseNumber) => {
 	switch (caseNumber) {
 		case 1:
-		userId = prompt("Pseudo déjà pris. Choisissez-en un autre!");
+		userId = prompt("Username already taken. Choose another one!");
 		socket.emit('new user', userId);
 		break;
 
