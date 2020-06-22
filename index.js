@@ -2,30 +2,18 @@ const socket = io();
 const input = document.getElementById('m');
 const form = document.querySelector('form');
 const messages = document.getElementById('messages');
+const writing = document.getElementById('change');
+
+
 console.log(document.cookie);
 let decodingCookie = document.cookie.split('=');
 let userId = decodingCookie[1];
 console.log(userId);
-const writing = document.getElementById('change');
-
 socket.emit('new user', userId);
 
-socket.on('error id', (caseNumber) => {
-	switch (caseNumber) {
-		case 1:
-		userId = prompt("Username already taken. Choose another one!");
-		socket.emit('new user', userId);
-		break;
-
-		case 2:
-		userId = prompt("Please, do not use special caracters (like >,./)");
-		socket.emit('new user', userId);
-		break;
-
-		default:
-		userId = prompt("Couldn't get you, please try again");
-		socket.emit('new user', userId);
-	}
+socket.on('username issue', (error) => {
+	alert(error);
+	window.location.replace('./authentification.html');
 });
 
 socket.on('notification', (user) => {
