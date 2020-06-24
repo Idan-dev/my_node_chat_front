@@ -3,13 +3,31 @@ const input = document.getElementById('m');
 const form = document.querySelector('form');
 const messages = document.getElementById('messages');
 const writing = document.getElementById('change');
+let userId;
 
+async function retrieveUsername (cookie) {
+	console.log('Current: ' + cookie);
+	let decodingCookie = cookie.split('=');
+	userId = decodingCookie[1];
+	console.log(userId);
+	cookie += ' ; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+	console.log('Deleted: ' + cookie);
+	return userId
+}
 
-console.log(document.cookie);
-let decodingCookie = document.cookie.split('=');
-let userId = decodingCookie[1];
-console.log(userId);
-socket.emit('new user', userId);
+async function sendNewUsername () {
+	let newUser = await retrieveUsername(document.cookie);
+	console.log('Tentative asynchrone ' + newUser);
+	socket.emit('new user', newUser);
+}
+
+sendNewUsername();
+
+window.addEventListener('beforeunload', (event) => {
+	document.cookie = 'username=' + userId;
+	console.log(document.cookie);
+});
+
 
 socket.on('username issue', (error) => {
 	alert(error);
