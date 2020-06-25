@@ -11,7 +11,8 @@ sendRequest.onreadystatechange = function () {
 		response = JSON.parse(this.responseText);
 		console.log(response);
 		document.cookie = "username=" + response.username;
-		console.log(response.username);
+		document.cookie = 'email=' + response.email;
+		console.log(document.cookie);
 		window.location.replace('./index.html');
 	} else if (this.readyState === XMLHttpRequest.DONE && this.status === 401) {
 		response = JSON.parse(this.responseText);

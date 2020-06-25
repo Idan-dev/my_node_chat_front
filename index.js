@@ -4,27 +4,50 @@ const form = document.querySelector('form');
 const messages = document.getElementById('messages');
 const writing = document.getElementById('change');
 let userId;
+let email;
 
 async function retrieveUsername (cookie) {
 	console.log('Current: ' + cookie);
-	let decodingCookie = cookie.split('=');
-	userId = decodingCookie[1];
-	console.log(userId);
+	let decodingCookie = cookie.split(';');
+	console.log('Decoding: ' + decodingCookie);
+	const regexUserId = /(?=username)\w+=\w+/g;
+	const regexEmail = /(?=email)\w+=\w+/g;
+	const isUserId = (element) => regexUserId.test(element);
+	const isEmail = (element) => regexEmail.test(element);
+	let decodingUserId;
+	let decodingEmail;
+	if (decodingCookie.findIndex(isUserId) != -1) {
+		console.log('username found in cookie');
+		decodingUserId = decodingCookie[decodingCookie.findIndex(isUserId)].split('=');
+	} else if (decodingCookie.findIndex(isEmail) != -1) {
+		console.log('email found in cookie');
+		decondingEmail = decodingCookie[decodingCookie.findIindex(isEmail)].split('=');
+	}
+
+	userId = decodingUserId[1];
+	email = decodingEmail[1];
+	console.log('Should be username: ' + userId);
+	console.log('Should be email: ' + email);
+	let newUser = {
+		userId: userId,
+		email: email
+	};
 	cookie += ' ; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
 	console.log('Deleted: ' + cookie);
-	return userId
-}
+	return newUser;
+};
 
 async function sendNewUsername () {
 	let newUser = await retrieveUsername(document.cookie);
 	console.log('Tentative asynchrone ' + newUser);
 	socket.emit('new user', newUser);
-}
+};
 
 sendNewUsername();
 
 window.addEventListener('beforeunload', (event) => {
 	document.cookie = 'username=' + userId;
+	document.cookie = 'email=' + email;
 	console.log(document.cookie);
 });
 
